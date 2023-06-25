@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Dancing+Script:wght@600&family=Fugaz+One&family=Gloria+Hallelujah&family=Kaushan+Script&family=Lobster+Two:ital,wght@0,400;1,700&family=Marck+Script&family=Merriweather&family=Monoton&family=Montserrat:wght@500&family=Mukta&family=PT+Sans&family=Pacifico&family=Rajdhani&family=Russo+One&family=Satisfy&family=Tangerine:wght@700&family=Ysabeau:wght@500&display=swap" rel="stylesheet">
+<link rel="icon" type="image.png" href="https://cdn-icons-png.flaticon.com/512/2065/2065250.png">
+</head>
+<body style="background-color:  rgb(27, 54, 33);">
+    <nav class="navbar navbar-light bg-light ">
+        <div class="container-fluid">
+          <h2 id="headName">BUDGET BUDDY</h2>
+         <!-- Button trigger modal -->
+<button type="button" class="enter-button m-3" onclick="getItem()" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Profile
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog " >
+    <div class="modal-content" style="border-radius: 2rem;">
+      <div class="modal-header" style="background-color: rgb(27, 54, 33);">
+        <h5 class="modal-title text-center text-light" >PROFILE</h5>
+        
+      </div>
+      <div class="modal-body">
+        <p id="homeHead">Name:</p>
+        <p id="homeUser">Username:</p>
+        <button class="enter-button mt-3" ondblclick="logout()">Logout</button>
+      </div>
+      <div class="modal-footer" style="background-color: rgb(27, 54, 33);">
+        <button type="button" class="danger-button" data-bs-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+         
+               
+    
+          
+        </div>
+      </nav>
+
+      <div class="container">
+        
+        <div class="row">
+            <div class="col-md-4">
+                <div class="col-md-12 enter-portion text-center position-sticky left-0" style="margin-top: 30px;">
+                    <h5 class="text-center" >INCOME</h5>
+                    <form action="" id="incomeForm">
+                     
+                      <input type="text" class="enter-input" style="margin-top: 20px;" id="source" placeholder="Source">
+                      <input type="number" class="enter-input" style="margin-top: 20px;" id="income" placeholder="Income">
+                    
+                    </form>
+                    <button class="enter-button" style="width: 150px;margin-top: 20px;" onclick="addIncome()">Add income</button>
+                    <p class="mt-2" style="color: red;" id="invalidIncome">
+
+                    </p>
+                  
+
+                </div>
+                <div class="col-md-12 enter-portion text-center position-sticky left-0" style="margin-top: 30px;">
+                    <h5 class="text-center">EXPENSES</h5>
+                    <form id="expenseReset" action="">
+                    <input type="text" class="enter-input" style="margin-top: 20px;" id="category" placeholder="Category">
+                    <input type="number" class="enter-input" style="margin-top: 20px;" id="amount" placeholder="Amount">
+                  </form>
+                    <button class="enter-button" style="width: 150px;margin-top: 20px;" onclick="reduceExpense()">Add Expense</button>
+                  
+                    <p class="mt-2" style="color: red;" id="invalidExpense">
+
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-8" >
+                <div class="col-md-12 enter-portion position-sticky right-0" style="margin-top: 30px;">
+                    <!-- <h5 class="text-center">BALANCE: RS </h5> -->
+                    <input id="balanceAmount" style="height: 70px;color: white;background-color: red;
+                    font-size: 2rem;" class="enter-input border-0 m-0 text-center" type="text" placeholder="0" disabled >
+                      
+                    
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                         <table id="displayIncomePortion" class="table text-light">
+                          <tr>
+                            <th>SOURCE</th>
+                            <th>INCOME</th>
+                          </tr>
+              
+                         </table>
+                  </div>
+                  <div class="col-md-6">
+                    <table id="displayExpense" class="table text-light" style="background-color:rgba(255, 0, 0, 0.582);">
+                      <tr>
+                        <th>CATEGORY</th>
+                        <th>EXPENCE</th>
+                      </tr>
+                     </table>
+                
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <button class="clear-button" ondblclick="clearAll()">CLEAR ALL</button>
+                  </div>
+                </div>
+            </div>
+            
+        </div>
+      </div>
+    
+      <script src="./script.js"></script>
+</body>
+</html>
