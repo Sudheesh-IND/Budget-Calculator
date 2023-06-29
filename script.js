@@ -20,7 +20,7 @@ function signup(){
             invalid.innerHTML='Username already present'
          }else{
             window.localStorage.setItem(Username,JSON.stringify(data))
-            // alert('Registered Successfully')
+            alert('Registered Successfully')
             window.location='./index.html'
             
          }
@@ -47,7 +47,7 @@ function login(){
          
          if(loginData.Password==password){
             window.location='./home.html'
-            
+             alert('Login successful')
          }else{
             invalidLogin.innerHTML='Password incorrect'
          }
@@ -154,6 +154,7 @@ function reduceExpense(){
 function logout(){
    localStorage.clear()
    window.location='./index.html'
+     alert('Logging out?')
 }
 
 //clear all
